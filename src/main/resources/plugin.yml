@@ -1,0 +1,13 @@
+name: ShardShop
+version: 1.0.0
+main: com.shardshop.ShardShopPlugin
+api-version: '1.21'
+description: Earn a shard every minute and spend them in the Shard Shop.
+
+commands:
+  shardshop:
+    description: Opens the Shard Shop
+    usage: /shardshop
+  shards:
+    description: Shows your shard balance
+    usage: /shards

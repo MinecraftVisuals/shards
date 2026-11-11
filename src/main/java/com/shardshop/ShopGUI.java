@@ -76,7 +76,7 @@ public class ShopGUI implements Listener {
         return item;
     }
 
-    /** The version shown in the shop (adds price lines). */
+    /** The version shown in the shop (adds price lines and the enchanted glint). */
     private ItemStack display(ItemStack tool) {
         ItemStack item = tool.clone();
         ItemMeta meta = item.getItemMeta();
@@ -87,6 +87,9 @@ public class ShopGUI implements Listener {
                 .append(plain(COST + " Shards", ShardShopPlugin.FUCHSIA)));
         lore.add(plain("Click to buy", NamedTextColor.YELLOW));
         meta.lore(lore);
+
+        // Enchanted glint (visual only, no real enchantments)
+        meta.setEnchantmentGlintOverride(true);
 
         item.setItemMeta(meta);
         return item;

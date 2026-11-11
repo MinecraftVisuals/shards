@@ -11,3 +11,12 @@ commands:
   shards:
     description: Shows your shard balance
     usage: /shards
+  giveshards:
+    description: Give shards to a player
+    usage: /giveshards <player> <amount>
+    permission: shardshop.admin
+
+permissions:
+  shardshop.admin:
+    description: Allows giving shards
+    default: op

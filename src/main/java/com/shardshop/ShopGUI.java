@@ -7,6 +7,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -72,11 +73,19 @@ public class ShopGUI implements Listener {
         ));
         meta.getPersistentDataContainer().set(plugin.toolKey(), PersistentDataType.STRING, type);
 
+        // ---- Enchantments (change levels or add/remove lines as you like) ----
+        meta.addEnchant(Enchantment.EFFICIENCY, 5, true);
+        meta.addEnchant(Enchantment.UNBREAKING, 3, true);
+        meta.addEnchant(Enchantment.MENDING, 1, true);
+        if (pickaxe) {
+            meta.addEnchant(Enchantment.FORTUNE, 3, true);
+        }
+
         item.setItemMeta(meta);
         return item;
     }
 
-    /** The version shown in the shop (adds price lines and the enchanted glint). */
+    /** The version shown in the shop (adds the price lines). */
     private ItemStack display(ItemStack tool) {
         ItemStack item = tool.clone();
         ItemMeta meta = item.getItemMeta();
@@ -87,9 +96,6 @@ public class ShopGUI implements Listener {
                 .append(plain(COST + " Shards", ShardShopPlugin.FUCHSIA)));
         lore.add(plain("Click to buy", NamedTextColor.YELLOW));
         meta.lore(lore);
-
-        // Enchanted glint (visual only, no real enchantments)
-        meta.setEnchantmentGlintOverride(true);
 
         item.setItemMeta(meta);
         return item;

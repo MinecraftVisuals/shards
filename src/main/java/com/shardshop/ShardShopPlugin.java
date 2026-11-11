@@ -49,6 +49,11 @@ public final class ShardShopPlugin extends JavaPlugin {
         }
     }
 
+    /** Used by other plugins (e.g. SimpleShop) to charge shards. */
+    public ShardManager shards() {
+        return shards;
+    }
+
     public NamespacedKey toolKey() {
         return toolKey;
     }

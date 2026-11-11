@@ -40,7 +40,6 @@ public class ToolListener implements Listener {
     public void onBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (working.contains(player.getUniqueId())) return;
-        if (player.isSneaking()) return; // sneak = break normally
 
         ItemStack tool = player.getInventory().getItemInMainHand();
         if (tool.getType() == Material.AIR || !tool.hasItemMeta()) return;
